@@ -3,3 +3,4 @@ from dino_runner.components.game import Game # ta importando da pasta dino_runne
 if __name__ == "__main__":
     game = Game()
     game.run()
+        
