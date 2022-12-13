@@ -1,5 +1,6 @@
 import pygame
 
+from dino_runner.components.dinosaur import dinosaur # botei isso
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 
 
@@ -14,6 +15,7 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.player = dinosaur()
         
     def run(self):
         # Game loop: events - update - draw
@@ -30,12 +32,15 @@ class Game:
                 self.playing = False
 
     def update(self):
-        pass
+        user_input = pygame.key.get_pressed()
+        self.player.update(user_input) # botei isso
+        
 
     def draw(self):
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255)) #Também aceita código hexadecimal "#FFFFFF"
         self.draw_background()
+        self.player.draw(self.screen) # botei isso
         pygame.display.update()
         pygame.display.flip()
 
@@ -43,7 +48,7 @@ class Game:
         image_width = BG.get_width()
         self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))
         self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
-        if self.x_pos_bg <= -image_width:
+        if self.x_pos_bg <= -image_width: # aqui ta fazendo a imagem do fundo rodar, pra dar sensacao de animacao
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
