@@ -4,3 +4,5 @@ if __name__ == "__main__":
     game = Game()
     game.run()
         
+# ADICIONAR OS CACTOS GRANDE
+# ADICIONAR OS PÁSSAROS
