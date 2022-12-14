@@ -2,6 +2,8 @@ import pygame
 from pygame.sprite import Sprite
 from dino_runner.utils.constants import RUNNING, JUMPING, DUCKING # 1 IMPORTEI DUCK
 
+pygame.mixer.init()
+jump = pygame.mixer.Sound('dino_runner/assets/other/Jump.wav') # importei som de jump
 
 X_POS = 80
 Y_POS = 310
@@ -41,6 +43,7 @@ class Dinosaur (Sprite):
             self.dino_jump = True # pulo vira true, e ele sobe
             self.dino_run = False # correndo vira false, pra ele n mexer as pernas
             self.dino_duck = False # duck vira false pra ele n abaixar no ar
+            jump.play() # quando pular, toca o som
         elif user_input[pygame.K_DOWN] and not self.dino_jump:
             self.dino_duck = True # duck vira true, e ele abaixa
             self.dino_run = False # run vira false pra ele n mexer as pernas (imagem do duck ja tem)

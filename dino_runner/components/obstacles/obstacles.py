@@ -12,7 +12,7 @@ class Obstacle (Sprite):
 
     def update (self, game_speed, obstacles):
         self.rect.x -= game_speed
-        if self.rect.x < - self.rect.width: # quando sair do diametro
+        if self.rect.x < -self.rect.width: # quando sair do diametro
             obstacles.pop() # pop pq é uma lista, vai sumir
     
     def draw (self, screen):
