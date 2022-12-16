@@ -10,6 +10,7 @@ pygame.mixer.init() # iniciei o metodo do mixer
 pygame.font.init() # iniciei font
 scored = pygame.mixer.Sound('dino_runner/assets/other/Score.wav')
 up = pygame.mixer.Sound('dino_runner/assets/other/Up.wav')
+roar = pygame.mixer.Sound('dino_runner/assets/other/Roar.wav')
 
 class Game:
     def __init__(self):
@@ -114,6 +115,7 @@ class Game:
     # DRAW POWER UP
     def draw_power_up_time(self):
         if self.player.has_power_up:
+            roar.play()
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 1)
             if time_to_show >= 0:
                 draw_message_component(

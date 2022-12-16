@@ -39,10 +39,12 @@ class ObstacleManager:
                     break
                 
                 elif game.player.type == 'hammer':
+                    punch.play()
                     self.obstacles.remove(obstacle)
                     game.destroyed_objects += 1
                     
                 elif game.player.type == 'shield':
+                    punch.play()
                     self.obstacles.remove(obstacle)
 
                 elif game.player.type == 'default':
